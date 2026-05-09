@@ -1,4 +1,4 @@
-name: 发布文件
+name: 发布APK文件
 
 on:
   push:
@@ -6,15 +6,18 @@ on:
       - 'v*'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
-  upload:
+  o:
     runs-on: ubuntu-latest
     
     steps:
     - name: 检出代码
       uses: actions/checkout@v4
     
-    - name: 完全发布
+    - name: 发布到Release
       uses: softprops/action-gh-release@v2
       with:
         files: ayf/*.apk
